@@ -16,7 +16,7 @@ class RecyclerAdapter(private var items: ArrayList<Map<String, String>>): Recycl
         var txtName: Button? = null
 
         init {
-            this.txtName = row?.findViewById<Button>(R.id.item_glava)
+            this.txtName = row.findViewById<Button>(R.id.item_glava)
         }
     }
 
@@ -31,25 +31,17 @@ class RecyclerAdapter(private var items: ArrayList<Map<String, String>>): Recycl
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        holder?.txtName?.text = items[position]["glava"]!!.replace(".txt","")
+        holder?.txtName?.text = items[position]["glava"]!!.replace(".html","")
         holder?.txtName?.onClick {
 
             //заполняем чушью
-            //обрежем заголовок если длинный
-            var t = items[position]["glava"]!!.replace(".txt","")
-            if(t.length>36){
-                t= t.substring(0,34)+"..."
-            }
-            Book_pot.title!!.text = t
-
-            Book_pot.book!!.text = items[position]["text_glavi"]
+            Book_pot.add_tetx(items[position]["text_glavi"].toString())
 
             //перематываем к началу
             Book_pot.skroll_book!!.scrollTo(0,0)
 
-
             //переходим на страницу
-            Pot.viewpager?.setCurrentItem(1)
+            Pot.viewpager?.currentItem = 1
         }
     }
 }

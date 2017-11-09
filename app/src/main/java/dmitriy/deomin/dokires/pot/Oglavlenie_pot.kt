@@ -9,11 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import dmitriy.deomin.dokires.R
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import java.io.File
-
-/**
- * Created by dimon on 06.11.2017.
- */
+import java.util.*
 
 class Oglavlenie_pot : Fragment() {
 
@@ -29,7 +27,6 @@ class Oglavlenie_pot : Fragment() {
         recyclerView.itemAnimator = DefaultItemAnimator()
 
         recyclerView.adapter = adapter
-        adapter.notifyDataSetChanged()
 
         return v
     }
@@ -39,10 +36,10 @@ class Oglavlenie_pot : Fragment() {
         val result = ArrayList<Map<String,String>>()
         var stroka:Map<String,String>
 
-        for (i in 0..files.size-1) {
+        for (i in 0 until files.size) {
             stroka = HashMap<String,String>(files.size)
             stroka.put("glava", File(files.get(i)).name)
-            stroka.put("text_glavi", context!!.assets.open("pot_book/"+files.get(i)).reader().readText())
+            stroka.put("text_glavi", context!!.assets.open("pot_book/"+files[i]).reader().readText())
             result.add(stroka)
         }
 
