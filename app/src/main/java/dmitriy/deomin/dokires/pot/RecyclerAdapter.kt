@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import dmitriy.deomin.dokires.R
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.textColor
 
 
 class RecyclerAdapter(private var items: ArrayList<Map<String, String>>): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
@@ -31,6 +32,7 @@ class RecyclerAdapter(private var items: ArrayList<Map<String, String>>): Recycl
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+        holder?.txtName?.textColor = items[position]["color_text"]!!.toInt()
         holder?.txtName?.text = items[position]["glava"]!!.replace(".html","")
         holder?.txtName?.onClick {
 

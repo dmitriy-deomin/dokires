@@ -1,5 +1,6 @@
 package dmitriy.deomin.dokires.pot
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Build
 import android.support.v4.app.Fragment
 import android.os.Bundle
@@ -13,6 +14,7 @@ import dmitriy.deomin.dokires.Main
 import dmitriy.deomin.dokires.R
 import kotlinx.android.synthetic.main.book_pot.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.sdk25.coroutines.onLongClick
 import uk.co.deanwild.flowtextview.FlowTextView
 
 class Book_pot:Fragment(){
@@ -20,16 +22,16 @@ class Book_pot:Fragment(){
     companion object {
         var book:FlowTextView? = null
         @SuppressLint("StaticFieldLeak")
-        var skroll_book:ScrollView? =null
+        var skroll_book:ScrollView? = null
         var text_book:String =""
 
         fun add_tetx(t:String){
-         text_book=t
+         text_book= t   //название файла с текстом
 
             if (Build.VERSION.SDK_INT >= 24) {
-                book!!.text = Html.fromHtml(t, 63) // for 24 api and more
+                book!!.text = Html.fromHtml(Main.con_v_palto!!.assets.open("pot_book/"+t).reader().readText(), 0) // for 24 api and more
             } else {
-                book!!.text = Html.fromHtml(t) // or for older api
+                book!!.text = Html.fromHtml(Main.con_v_palto!!.assets.open("pot_book/"+t).reader().readText()) // or for older api
             }
         }
 
@@ -40,7 +42,7 @@ class Book_pot:Fragment(){
         val v: View = inflater.inflate(R.layout.book_pot, null)
 
         skroll_book = v.findViewById(R.id.skroll_book_pot)
-        book = v.findViewById(R.id.book)
+        book  = v.findViewById(R.id.book_telo)
 
 
         //Выключим меню
@@ -49,38 +51,50 @@ class Book_pot:Fragment(){
         //установим размер шрифта из памяти
         val save_size = Main.read_str("book_font_size")
         if(save_size.length>1){
-            v.book.setTextSize(save_size.toFloat())
+            book!!.setTextSize(save_size.toFloat())
+        }
+
+
+        //установим цвета
+        //установим цвет фона
+        if (Main.read_str("color_fon").length > 1) {
+           v.fon_book_pot.setBackgroundColor(Main.read_str("color_fon").toInt())
+        }
+
+        if(Main.read_str("color_text").length>1){
+           book!!.setTextColor(Main.read_str("color_text").toInt())
+        }else{
+            book!!.setTextColor(Color.BLACK)
         }
 
         //установим текст  из памяти
         if(Main.read_str("old_text_book_pot")!=""){
             if (Build.VERSION.SDK_INT >= 24) {
-                book!!.text = Html.fromHtml(Main.read_str("old_text_book_pot"), 63) // for 24 api and more
+                book!!.text = Html.fromHtml(
+                        Main.con_v_palto!!.assets.open(
+                                "pot_book/"+Main.read_str("old_text_book_pot")).reader().readText(), 0) // for 24 api and more
             } else {
-                book!!.text = Html.fromHtml(Main.read_str("old_text_book_pot")) // or for older api
+                book!!.text = Html.fromHtml( Main.con_v_palto!!.assets.open(
+                        "pot_book/"+Main.read_str("old_text_book_pot")).reader().readText()) // or for older api
             }
-        }else{
-            book?.text ="Выберите главу\n(клик по заголовку откроем меню настройки шрифта)"
-
         }
 
-        Log.d("ttt","oncreate")
-        v.title_book.onClick {
+        book!!.onLongClick {
             if(v.book_menu.visibility==View.GONE){
-                v.book_menu.visibility = View.VISIBLE
-            }else{v.book_menu.visibility = View.GONE}
+            v.book_menu.visibility = View.VISIBLE
+        }else{v.book_menu.visibility = View.GONE}
         }
 
         v.big_text.onClick {
-            val size = v.book.textsize
-            v.book.setTextSize(size+1)
-            Main.save_str("book_font_size",v.book.textsize.toString())
+            val size = v.book_telo.textsize
+            book!!.setTextSize(size+1)
+            Main.save_str("book_font_size",v.book_telo.textsize.toString())
         }
 
         v.smoll_text.onClick {
-            val size = v.book.textsize
-            v.book.setTextSize(size-1)
-            Main.save_str("book_font_size",v.book.textsize.toString())
+            val size = v.book_telo.textsize
+            book!!.setTextSize(size-1)
+            Main.save_str("book_font_size",v.book_telo.textsize.toString())
         }
 
 //        //при скролинге текста будем скрывать заголовок
@@ -93,9 +107,6 @@ class Book_pot:Fragment(){
 //            }
 //        }
 
-
-
-
         return v
     }
 
@@ -104,12 +115,9 @@ class Book_pot:Fragment(){
         //проматаем
         val s = Main.read_str("old_skrol_book_pot")
         if(s != ""){
-             skroll_book!!.scrollTo(0,s.toInt())
+            Book_pot.skroll_book!!.smoothScrollTo(0,s.toInt())
         }
-        Log.d("ttt","oncreated")
     }
-
-
 
     override fun onDestroyView() {
         //сохраняем текст
@@ -121,5 +129,8 @@ class Book_pot:Fragment(){
 
         super.onDestroyView()
     }
+
+
+
 }
 

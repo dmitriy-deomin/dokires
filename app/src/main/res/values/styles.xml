@@ -5,4 +5,9 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="myTheme" parent="android:Theme.Holo.Dialog.NoActionBar.MinWidth">
+        <item name="android:windowMinWidthMinor">0dip</item>
+        <item name="android:windowMinWidthMajor">0dip</item>
+   </style>
+
 </resources>

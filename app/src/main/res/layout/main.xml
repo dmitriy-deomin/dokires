@@ -6,17 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorFon"
+    android:gravity="center"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".Main">
-
-
-    <TextView
-        android:id="@+id/version"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:paddingRight="10dp"
-        android:text="версия 0.1" />
 
     <TextView
         android:id="@+id/nameapp"
@@ -25,7 +18,6 @@
         android:gravity="center"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:paddingTop="70dp"
         android:text="Документы РЭС"
         android:textSize="22sp"
         android:textStyle="bold" />
@@ -34,39 +26,33 @@
         android:id="@+id/rasshifrovka"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="50dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="15dp"
         android:text="РЭС: Районные электрические сети — производственное подразделение районного масштаба в рамках областной энергетической компании энергосистемы России и Казахстана"
         android:textStyle="italic" />
 
-    <LinearLayout
-        android:id="@+id/main_manu_fon"
+    <Button
+        android:id="@+id/but_pot"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:paddingBottom="10dp"
+        android:text="Правила по охране труда при эксплуатации электроустановок" />
 
-        <Button
-            android:id="@+id/but_pot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Правила по охране труда при эксплуатации электроустановок" />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:paddingTop="10dp"
+        android:text="Организационно технические мероприятия по электробезопасности" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Организационно технические мероприятия по электробезопасности" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-
-    </LinearLayout>
-
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="Button" />
 </LinearLayout>

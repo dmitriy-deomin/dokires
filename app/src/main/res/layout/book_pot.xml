@@ -10,16 +10,6 @@
     android:padding="5dp"
     tools:context=".pot.Book_pot">
 
-    <TextView
-        android:id="@+id/title_book"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:text="Правила по охране труда"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,11 +23,10 @@
             android:layout_weight="1">
 
             <uk.co.deanwild.flowtextview.FlowTextView
-                android:id="@+id/book"
+                android:id="@+id/book_telo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
-
             </uk.co.deanwild.flowtextview.FlowTextView>
 
         </ScrollView>

@@ -18,6 +18,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".pot.Pot" />
+        <activity android:name=".Edit_color"
+            android:theme="@style/myTheme">
+        </activity>
     </application>
 
 </manifest>

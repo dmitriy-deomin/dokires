@@ -3,6 +3,7 @@ import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.support.v4.view.ViewPager
 import android.view.View
+import dmitriy.deomin.dokires.Main
 import dmitriy.deomin.dokires.R
 
 class Pot : FragmentActivity(){
@@ -20,7 +21,15 @@ class Pot : FragmentActivity(){
         viewpager = findViewById<View>(R.id.pager) as ViewPager
 
         viewpager?.adapter = adapter
-        viewpager?.currentItem = 0
+
+
+        //если первый раз открывает то покажем оглавление
+        if(Main.read_str("old_text_book_pot").length<2) {
+            viewpager?.currentItem = 0
+        }else{
+            //иначе продолжим чтение
+            viewpager?.currentItem = 1
+        }
 
     }
 
