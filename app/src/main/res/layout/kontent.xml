@@ -17,7 +17,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Таблица 1"
+                android:text="Таблица 1 \n Допустимые расстояния до токоведущих частей электроустановок, находящихся под напряжением"
                 android:textStyle="bold" />
 
             <ImageView
@@ -30,7 +30,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Таблица 2"
+                android:text="Таблица 2 \n Дополнительные обязанности работников, ответственных за безопасное ведение работ"
                 android:textStyle="bold" />
 
             <ImageView
@@ -43,7 +43,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Таблица 3"
+                android:text="Таблица 3 \n Допустимые уровни магнитного поля"
                 android:textStyle="bold" />
 
             <ImageView
@@ -56,7 +56,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Таблица 4"
+                android:text="Таблица 4 \n Порядок продувки ресиверов"
                 android:textStyle="bold" />
 
             <ImageView
@@ -69,7 +69,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Таблица 5"
+                android:text="Таблица 5 \n Расстояние по горизонтали от основания откоса выемки до ближайшей опоры машины"
                 android:textStyle="bold" />
 
             <ImageView
@@ -82,7 +82,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Таблица 6"
+                android:text="Таблица 6 \n Минимально допустимые расстояния по струе воды между насадкой и обмываемым изолятором"
                 android:textStyle="bold" />
 
             <ImageView
@@ -95,7 +95,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Таблица 7"
+                android:text="Таблица 7 \n Условия использования в работе электроинструмента и ручных электрических машин различных классовv"
                 android:textStyle="bold" />
 
             <ImageView
@@ -113,7 +113,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Таблица 8"
+                android:text="Таблица 8 \n Допустимые расстояния до токоведущих частей, находящихся под напряжением"
                 android:textStyle="bold" />
 
             <ImageView
