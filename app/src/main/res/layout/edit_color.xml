@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fon_edit_color"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/colorFon"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/name_i_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/edit_color_fon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="Изменить цвет фона"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/edit_color_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="Изменить цвет текста"
+        android:textColor="@android:color/black" />
+</LinearLayout>
