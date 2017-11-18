@@ -9,7 +9,7 @@ import com.github.danielnilsson9.colorpickerview.dialog.ColorPickerDialogFragmen
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.textColor
 
-class Edit_color : Activity(),ColorPickerDialogFragment.ColorPickerDialogListener{
+class EditColor : Activity(),ColorPickerDialogFragment.ColorPickerDialogListener{
 
     private val DIALOG_fon: Int = 0
     private val DIALOG_text: Int = 1

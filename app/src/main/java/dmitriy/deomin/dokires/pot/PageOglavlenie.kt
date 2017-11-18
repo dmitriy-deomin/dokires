@@ -16,7 +16,7 @@ import org.jetbrains.anko.backgroundColor
 import java.io.File
 import java.util.*
 
-class Oglavlenie_pot : Fragment() {
+class PageOglavlenie : Fragment() {
 
     var COLOR_TEXT:String = ""
 
@@ -37,7 +37,7 @@ class Oglavlenie_pot : Fragment() {
 
         val recyclerView: RecyclerView= v.findViewById(R.id.my_recycler_view)
 
-        val adapter = RecyclerAdapter(generateData(v.context.assets.list("pot_book")))
+        val adapter = RecyclerAdapterOglavlenia(generateData(v.context.assets.list("pot_book")))
         val layoutManager = LinearLayoutManager(v.context)
         recyclerView.layoutManager = layoutManager
         recyclerView.itemAnimator = DefaultItemAnimator()

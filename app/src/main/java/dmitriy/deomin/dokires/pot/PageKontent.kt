@@ -12,13 +12,10 @@ import dmitriy.deomin.dokires.R
 //тут будут сокращения и таблицы
 
 
-class Sokrashenia : Fragment() {
+class PageKontent : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v: View = inflater.inflate(R.layout.sokrashenia_pot, null)
-
-
-
+        val v: View = inflater.inflate(R.layout.kontent, null)
 
         return v
     }

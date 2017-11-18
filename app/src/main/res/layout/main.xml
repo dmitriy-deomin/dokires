@@ -30,7 +30,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="15dp"
-        android:text="РЭС: Районные электрические сети — производственное подразделение районного масштаба в рамках областной энергетической компании энергосистемы России и Казахстана"
+        android:text="РЭС: Районные электрические сети — производственное подразделение районного масштаба в рамках областной энергетической компании энергосистемы России"
         android:textStyle="italic" />
 
     <Button
@@ -47,12 +47,6 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:paddingTop="10dp"
-        android:text="Организационно технические мероприятия по электробезопасности" />
+        android:text="ещё кнопка" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:text="Button" />
 </LinearLayout>

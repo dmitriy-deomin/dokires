@@ -17,7 +17,7 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.sdk25.coroutines.onLongClick
 import uk.co.deanwild.flowtextview.FlowTextView
 
-class Book_pot:Fragment(){
+class PageBook :Fragment(){
 
     companion object {
         var book:FlowTextView? = null
@@ -115,7 +115,7 @@ class Book_pot:Fragment(){
         //проматаем
         val s = Main.read_str("old_skrol_book_pot")
         if(s != ""){
-            Book_pot.skroll_book!!.smoothScrollTo(0,s.toInt())
+            PageBook.skroll_book!!.smoothScrollTo(0,s.toInt())
         }
     }
 

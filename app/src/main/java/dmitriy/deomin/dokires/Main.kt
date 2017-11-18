@@ -1,5 +1,6 @@
 package dmitriy.deomin.dokires
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
@@ -14,11 +15,8 @@ import android.view.animation.AnimationUtils
 class Main : Activity() {
 
     companion object {
-
-
-        //cotext
+        @SuppressLint("StaticFieldLeak")
         var con_v_palto: Context? = null
-
 
         //сохранялка
         //----------------------------------------------------------------
@@ -62,13 +60,12 @@ class Main : Activity() {
             rasshifrovka.textColor = text_color
             but_pot.textColor = text_color
             button2.textColor = text_color
-            button3.textColor = text_color
         }
 
 
         //титл, при клике будем открывать меню настройки цвета фона и текста
         nameapp.onClick { val anim = AnimationUtils.loadAnimation(this@Main, R.anim.myalpha)
-            nameapp.startAnimation(anim); startActivity<Edit_color>() }
+            nameapp.startAnimation(anim); startActivity<EditColor>() }
 
         //кнопки
         but_pot.onClick { val anim = AnimationUtils.loadAnimation(this@Main, R.anim.myalpha)

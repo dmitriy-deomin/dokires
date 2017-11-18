@@ -12,9 +12,9 @@ class Adapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment? {
         when (position) {
-            0 -> return Oglavlenie_pot()
-            1 -> return Book_pot()
-            2 -> return Sokrashenia()
+            0 -> return PageOglavlenie()
+            1 -> return PageBook()
+            2 -> return PageKontent()
         }
         return null
     }
