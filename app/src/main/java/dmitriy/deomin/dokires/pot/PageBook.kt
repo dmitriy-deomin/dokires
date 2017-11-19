@@ -5,7 +5,6 @@ import android.os.Build
 import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.text.Html
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.LayoutInflater
@@ -103,6 +102,16 @@ class PageBook :Fragment(){
             Main.save_str("book_font_size",v.book_telo.textsize.toString())
         }
 
+
+
+//        //проматаем
+//        val s = Main.read_str("old_skrol_book_pot")
+//        if(s != ""){
+//                skroll_book!!.scrollY=s.toInt()
+//        }
+
+
+
 //        //при скролинге текста будем скрывать заголовок
 //        v.skroll_book_pot.onScrollChange { v, scrollX, scrollY, oldScrollX, oldScrollY ->
 //            if(scrollX==100){
@@ -115,24 +124,11 @@ class PageBook :Fragment(){
 
         return v
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        //проматаем
-        val s = Main.read_str("old_skrol_book_pot")
-        if(s != ""){
-           // PageBook.skroll_book!!.smoothScrollTo(0,s.toInt())
-        }
-    }
-
     override fun onDestroyView() {
-        //сохраняем текст
+        //сохраняем текск
         Main.save_str("old_text_book_pot", text_book)
         //сохраняем прокрутку
-        Main.save_str("old_skrol_book_pot", skroll_book!!.scrollY.toString())
-
-        Log.d("ttt",skroll_book!!.scrollY.toString())
-
+       // Main.save_str("old_skrol_book_pot", skroll_book!!.scrollY.toString())
         super.onDestroyView()
     }
 
