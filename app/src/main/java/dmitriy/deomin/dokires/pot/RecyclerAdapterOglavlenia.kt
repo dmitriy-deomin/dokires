@@ -43,6 +43,7 @@ class RecyclerAdapterOglavlenia(private var items: ArrayList<Map<String, String>
             holder?.txtName?.textColor =items[position]["color_text"]!!.toInt()
         }
 
+        //ставим название главы на кнопку
         holder?.txtName?.text = items[position]["glava"]!!.replace(".html","")
 
         //при клике будем загружать текст и перехадить на др вклвдку
