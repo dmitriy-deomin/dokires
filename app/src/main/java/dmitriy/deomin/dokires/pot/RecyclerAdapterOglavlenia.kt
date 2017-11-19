@@ -36,7 +36,6 @@ class RecyclerAdapterOglavlenia(private var items: ArrayList<Map<String, String>
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
 
-
         //посиотрим если есть отмеченые кнопки окрасим из
         if(Main.read_str(items[position]["glava"].toString())==items[position]["glava"].toString()){
             holder?.txtName?.textColor =Color.RED
@@ -46,28 +45,30 @@ class RecyclerAdapterOglavlenia(private var items: ArrayList<Map<String, String>
 
         holder?.txtName?.text = items[position]["glava"]!!.replace(".html","")
 
+        //при клике будем загружать текст и перехадить на др вклвдку
         holder?.txtName?.onClick {
-            //играем анимаию
-            val anim = AnimationUtils.loadAnimation(Main.con_v_palto, R.anim.myalpha)
-            holder?.txtName?.startAnimation(anim)
-            //заполняем чушью
-            PageBook.add_tetx(items[position]["text_glavi"].toString())
-            //перематываем к началу
-            PageBook.skroll_book!!.scrollTo(0,0)
-            //переходим на страницу
-            Pot.viewpager?.currentItem = 1
+                //играем анимацию
+                val anim = AnimationUtils.loadAnimation(Main.con_v_palto, R.anim.myalpha)
+                holder.txtName?.startAnimation(anim)
+                //заполняем чушью
+                PageBook.add_tetx(items[position]["text_glavi"].toString())
+                //перематываем к началу
+                PageBook.skroll_book!!.scrollTo(0, 0)
+                //переходим на страницу
+                Pot.viewpager?.currentItem = 1
         }
 
         //при долгом клике будем рисовать текст кнопки ярким
-
-        holder?.txtName?.onLongClick{
-            //посиотрим если она отмечена сбросим
+        holder?.txtName?.onLongClick(returnValue = true){
+            //посмотрим если она отмечена, сбросим
             if (Main.read_str(items[position]["glava"].toString()) == items[position]["glava"].toString()) {
-                holder?.txtName?.textColor = items[position]["color_text"]!!.toInt()
+                holder.txtName?.textColor = items[position]["color_text"]!!.toInt()
+                //сохраним
                 Main.save_str(items[position]["glava"].toString(), "")
             } else {
                 //иначече окрасим
-                holder?.txtName?.textColor = Color.RED
+                holder.txtName?.textColor = Color.RED
+                //сохраним
                 Main.save_str(items[position]["glava"].toString(), items[position]["glava"].toString())
             }
         }
