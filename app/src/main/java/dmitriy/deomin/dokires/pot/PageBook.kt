@@ -45,6 +45,11 @@ class PageBook :Fragment(){
         book  = v.findViewById(R.id.book_telo)
 
 
+        //включим постояное отображение прокрутки
+
+
+
+
         //Выключим меню
         v.book_menu.visibility = View.GONE
 
@@ -82,7 +87,8 @@ class PageBook :Fragment(){
         book!!.onLongClick {
             if(v.book_menu.visibility==View.GONE){
             v.book_menu.visibility = View.VISIBLE
-        }else{v.book_menu.visibility = View.GONE}
+        }else
+            {v.book_menu.visibility = View.GONE}
         }
 
         v.big_text.onClick {
@@ -115,7 +121,7 @@ class PageBook :Fragment(){
         //проматаем
         val s = Main.read_str("old_skrol_book_pot")
         if(s != ""){
-            PageBook.skroll_book!!.smoothScrollTo(0,s.toInt())
+           // PageBook.skroll_book!!.smoothScrollTo(0,s.toInt())
         }
     }
 
