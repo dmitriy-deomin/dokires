@@ -34,33 +34,39 @@ class RecyclerAdapterOglavlenia(private var items: ArrayList<Map<String, String>
         return items.size
     }
 
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         //посиотрим если есть отмеченые кнопки окрасим из
         if(Main.read_str(items[position]["glava"].toString())==items[position]["glava"].toString()){
-            holder?.txtName?.textColor =Color.RED
+            holder.txtName?.textColor =Color.RED
         }else{
-            holder?.txtName?.textColor =items[position]["color_text"]!!.toInt()
+            holder.txtName?.textColor =items[position]["color_text"]!!.toInt()
         }
 
         //ставим название главы на кнопку
-        holder?.txtName?.text = items[position]["glava"]!!.replace(".html","")
+        holder.txtName?.text = items[position]["glava"]!!.replace(".html","")
 
         //при клике будем загружать текст и перехадить на др вклвдку
-        holder?.txtName?.onClick {
+        holder.txtName?.onClick {
                 //играем анимацию
                 val anim = AnimationUtils.loadAnimation(Main.con_v_palto, R.anim.myalpha)
                 holder.txtName?.startAnimation(anim)
+
+                //сбрасываем сохраненую позицию
+                 Main.save_str("old_skrol_book_pot", "")
+
                 //заполняем чушью
                 PageBook.add_tetx(items[position]["text_glavi"].toString())
-                //перематываем к началу
-                PageBook.skroll_book!!.scrollTo(0, 0)
+
+                //сохраняем текст , при следующем открытии книги будет открыатся сразу
+                Main.save_str("old_text_book_pot", items[position]["text_glavi"].toString())
+
                 //переходим на страницу
-                Pot.viewpager?.currentItem = 1
+                Pot.viewpager!!.currentItem = 1
         }
 
         //при долгом клике будем рисовать текст кнопки ярким
-        holder?.txtName?.onLongClick(returnValue = true){
+        holder.txtName?.onLongClick(returnValue = true){
             //посмотрим если она отмечена, сбросим
             if (Main.read_str(items[position]["glava"].toString()) == items[position]["glava"].toString()) {
                 holder.txtName?.textColor = items[position]["color_text"]!!.toInt()

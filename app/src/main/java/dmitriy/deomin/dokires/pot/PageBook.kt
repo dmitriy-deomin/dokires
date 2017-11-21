@@ -5,6 +5,7 @@ import android.os.Build
 import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.LayoutInflater
@@ -12,21 +13,29 @@ import android.widget.ScrollView
 import dmitriy.deomin.dokires.Main
 import dmitriy.deomin.dokires.R
 import kotlinx.android.synthetic.main.book_pot.view.*
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.async
+import org.jetbrains.anko.custom.async
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.sdk25.coroutines.onLongClick
+import org.jetbrains.anko.sdk25.coroutines.onSystemUiVisibilityChange
 import uk.co.deanwild.flowtextview.FlowTextView
+import java.lang.Thread.sleep
+import android.view.ViewTreeObserver
+import kotlinx.android.synthetic.main.book_pot.*
+import org.jetbrains.anko.sdk25.coroutines.onScrollChange
+
 
 class PageBook :Fragment(){
 
+
+
+    var igrik:Int = 0
+
     companion object {
         var book:FlowTextView? = null
-        @SuppressLint("StaticFieldLeak")
-        var skroll_book:ScrollView? = null
-        var text_book:String =""
 
         fun add_tetx(t:String){
-         text_book= t   //название файла с текстом
-
             if (Build.VERSION.SDK_INT >= 24) {
                 book!!.text = Html.fromHtml(Main.con_v_palto!!.assets.open("pot_book/"+t).reader().readText(), 0) // for 24 api and more
             } else {
@@ -40,14 +49,7 @@ class PageBook :Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.book_pot, null)
 
-        skroll_book = v.findViewById(R.id.skroll_book_pot)
         book  = v.findViewById(R.id.book_telo)
-
-
-        //включим постояное отображение прокрутки
-
-
-
 
         //Выключим меню
         v.book_menu.visibility = View.GONE
@@ -66,9 +68,9 @@ class PageBook :Fragment(){
         }
 
         if(Main.read_str("color_text").length>1){
-           book!!.setTextColor(Main.read_str("color_text").toInt())
+           book!!.textColor=(Main.read_str("color_text").toInt())
         }else{
-            book!!.setTextColor(Color.BLACK)
+            book!!.textColor = Color.BLACK
         }
 
         //установим текст  из памяти
@@ -84,10 +86,13 @@ class PageBook :Fragment(){
         }
 
         book!!.onLongClick {
+            //сохраняем прокрутку
+            Main.save_str("old_skrol_book_pot", igrik.toString())
+
             if(v.book_menu.visibility==View.GONE){
             v.book_menu.visibility = View.VISIBLE
-        }else
-            {v.book_menu.visibility = View.GONE}
+        }else {
+                v.book_menu.visibility = View.GONE}
         }
 
         v.big_text.onClick {
@@ -103,36 +108,34 @@ class PageBook :Fragment(){
         }
 
 
-
-//        //проматаем
-//        val s = Main.read_str("old_skrol_book_pot")
-//        if(s != ""){
-//                skroll_book!!.scrollY=s.toInt()
-//        }
+        v.add_zakladka.onClick {  }
 
 
+        v.skroll_book_pot!!.viewTreeObserver.addOnGlobalLayoutListener {
+            //проматаем на сохранёную позицию
+            if(Main.read_str("old_skrol_book_pot").length>1) {
+                v.skroll_book_pot!!.scrollY = Main.read_str("old_skrol_book_pot").toInt()
+            }else{
+                //или на начало
+                v.skroll_book_pot!!.scrollY=0
+            }
+        }
+        v.skroll_book_pot.onScrollChange { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            igrik = oldScrollY
+        }
 
-//        //при скролинге текста будем скрывать заголовок
-//        v.skroll_book_pot.onScrollChange { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-//            if(scrollX==100){
-//                v!!.title_book.visibility = View.GONE
-//            }
-//            if(scrollX==0){
-//                v!!.title_book.visibility = View.VISIBLE
-//            }
-//        }
+
 
         return v
     }
-    override fun onDestroyView() {
-        //сохраняем текск
-        Main.save_str("old_text_book_pot", text_book)
+
+    override fun onPause() {
         //сохраняем прокрутку
-       // Main.save_str("old_skrol_book_pot", skroll_book!!.scrollY.toString())
-        super.onDestroyView()
+        Main.save_str("old_skrol_book_pot", igrik.toString())
+
+        Log.d("ttt",igrik.toString())
+        super.onPause()
     }
-
-
 
 }
 
