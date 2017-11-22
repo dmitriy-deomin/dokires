@@ -9,20 +9,12 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.LayoutInflater
-import android.widget.ScrollView
 import dmitriy.deomin.dokires.Main
 import dmitriy.deomin.dokires.R
 import kotlinx.android.synthetic.main.book_pot.view.*
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.async
-import org.jetbrains.anko.custom.async
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.sdk25.coroutines.onLongClick
-import org.jetbrains.anko.sdk25.coroutines.onSystemUiVisibilityChange
 import uk.co.deanwild.flowtextview.FlowTextView
-import java.lang.Thread.sleep
-import android.view.ViewTreeObserver
-import kotlinx.android.synthetic.main.book_pot.*
 import org.jetbrains.anko.sdk25.coroutines.onScrollChange
 
 

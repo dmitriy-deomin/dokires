@@ -23,6 +23,7 @@ class Pot : FragmentActivity(){
         viewpager = findViewById<View>(R.id.pager) as ViewPager
 
         viewpager!!.adapter = adapter
+        viewpager!!.offscreenPageLimit = 3
 
 
         //если первый раз открывает то покажем оглавление
