@@ -3,7 +3,6 @@ package dmitriy.deomin.dokires.pot
 import android.graphics.Color
 import android.graphics.Typeface
 import android.support.v7.widget.RecyclerView
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,6 @@ import dmitriy.deomin.dokires.R
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.sdk25.coroutines.onLongClick
 import org.jetbrains.anko.textColor
-import org.jetbrains.anko.textSizeDimen
 
 
 class RecyclerAdapterOglavlenia(private var items: ArrayList<Map<String, String>>): RecyclerView.Adapter<RecyclerAdapterOglavlenia.ViewHolder>() {
@@ -59,6 +57,7 @@ class RecyclerAdapterOglavlenia(private var items: ArrayList<Map<String, String>
 
         //при клике будем загружать текст и перехадить на др вклвдку
         holder.txtName!!.onClick {
+
                 //играем анимацию
                 val anim = AnimationUtils.loadAnimation(Main.con_v_palto, R.anim.myalpha)
                 holder.txtName!!.startAnimation(anim)

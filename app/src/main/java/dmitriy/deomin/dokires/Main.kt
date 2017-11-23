@@ -11,6 +11,10 @@ import kotlinx.android.synthetic.main.main.*
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import android.view.animation.AnimationUtils
+import org.json.JSONException
+import org.json.JSONArray
+
+
 
 class Main : Activity() {
 
@@ -39,6 +43,42 @@ class Main : Activity() {
         fun save_str(key: String, value: String) {
             settings!!.edit().putString(key, value).apply()
         }
+
+
+        //*************************************************************************************************
+        //ArrayList
+        fun save_arraylist(key: String, values: ArrayList<String>) {
+            val editor = settings!!.edit()
+            val a = JSONArray()
+            for (i in 0 until values.size) {
+                a.put(values[i])
+            }
+            if (!values.isEmpty()) {
+                editor.putString(key, a.toString())
+            } else {
+                editor.putString(key, null)
+            }
+            editor.commit()
+        }
+        fun read_arraylist(key: String): ArrayList<String> {
+            val json = settings!!.getString(key, null)
+            val urls = ArrayList<String>()
+            if (json != null) {
+                try {
+                    val a = JSONArray(json)
+                    for (i in 0 until a.length()) {
+                        val url = a.optString(i)
+                        urls.add(url)
+                    }
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+            return urls
+        }
+        //*************************************************************************************************
+
         //----------------------------------------------------------------
     }
 
@@ -71,5 +111,11 @@ class Main : Activity() {
         but_pot.onClick { val anim = AnimationUtils.loadAnimation(this@Main, R.anim.myalpha)
             but_pot.startAnimation(anim); startActivity<Pot>() }
     }
+
+
+
+
+
+
 }
 
