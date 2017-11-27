@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.support.annotation.IntegerRes
 import android.support.v4.app.FragmentActivity
 import dmitriy.deomin.dokires.pot.Pot
 import kotlinx.android.synthetic.main.main.*
@@ -19,36 +20,41 @@ import org.json.JSONArray
 class Main : Activity() {
 
     companion object {
+
+        var COLOR_FON = R.color.colorFon
+        var COLOR_TEXT = R.color.colorText
+
         @SuppressLint("StaticFieldLeak")
-        var con_v_palto: Context? = null
+        lateinit var con_v_palto: Context
 
         //сохранялка
         //----------------------------------------------------------------
-        var settings: SharedPreferences? = null // сохранялка
+        lateinit var settings: SharedPreferences// сохранялка
 
         //чтение настроек
         fun read_str(key: String): String {
             if (ne_pusto(key)) {
-                return settings!!.getString(key, "")
+                return settings.getString(key, "")
             } else {
                 return ""
             }
         }
 
         fun ne_pusto(key: String): Boolean {
-            return settings!!.contains(key)
+            return settings.contains(key)
         }
 
         //запись настроек
         fun save_str(key: String, value: String) {
-            settings!!.edit().putString(key, value).apply()
+            settings.edit().putString(key, value).apply()
         }
 
 
-        //*************************************************************************************************
+        @SuppressLint("ApplySharedPref")
+//*************************************************************************************************
         //ArrayList
         fun save_arraylist(key: String, values: ArrayList<String>) {
-            val editor = settings!!.edit()
+            val editor = settings.edit()
             val a = JSONArray()
             for (i in 0 until values.size) {
                 a.put(values[i])
@@ -61,7 +67,7 @@ class Main : Activity() {
             editor.commit()
         }
         fun read_arraylist(key: String): ArrayList<String> {
-            val json = settings!!.getString(key, null)
+            val json = settings.getString(key, null)
             val urls = ArrayList<String>()
             if (json != null) {
                 try {
@@ -92,10 +98,14 @@ class Main : Activity() {
 
         //устанавливаем цвета
         if (read_str("color_fon").length > 1) {
-            fon.backgroundColor = read_str("color_fon").toInt()
+            COLOR_FON=read_str("color_fon").toInt()
+
+            fon.backgroundColor = COLOR_FON
         }
         if (read_str("color_text").length > 1) {
-            val text_color = read_str("color_text").toInt()
+            COLOR_TEXT=read_str("color_text").toInt()
+
+            val text_color = COLOR_TEXT
             nameapp.textColor = text_color
             rasshifrovka.textColor = text_color
             but_pot.textColor = text_color

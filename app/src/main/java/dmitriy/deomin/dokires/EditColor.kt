@@ -11,24 +11,17 @@ import org.jetbrains.anko.textColor
 
 class EditColor : Activity(),ColorPickerDialogFragment.ColorPickerDialogListener{
 
-    private val DIALOG_fon: Int = 0
-    private val DIALOG_text: Int = 1
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.edit_color)
 
         //устанавливаем цвета если есть в сохранялках
-        if(Main.read_str("color_fon").length>1){
-            fon_edit_color.backgroundColor = Main.read_str("color_fon").toInt()
-        }
-        if(Main.read_str("color_text").length>1){
-            val color = Main.read_str("color_text").toInt()
-            //меняем у виджетов
-            name_i_version.textColor = color
-            edit_color_text.textColor = color
-            edit_color_fon.textColor = color
-        }
+        fon_edit_color.backgroundColor = Main.COLOR_FON
+
+        //меняем у виджетов
+        name_i_version.textColor = Main.COLOR_TEXT
+        edit_color_text.textColor = Main.COLOR_TEXT
+        edit_color_fon.textColor = Main.COLOR_TEXT
 
 
 
@@ -37,7 +30,7 @@ class EditColor : Activity(),ColorPickerDialogFragment.ColorPickerDialogListener
         edit_color_fon.onClick {
 
             val f = ColorPickerDialogFragment
-                    .newInstance(DIALOG_fon, null, null, resources.getColor(R.color.colorFon), true)
+                    .newInstance(0, null, null, resources.getColor(R.color.colorFon), true)
 
             f.setStyle(DialogFragment.STYLE_NORMAL, R.style.myTheme)
             f.show(fragmentManager, "d")
@@ -46,7 +39,7 @@ class EditColor : Activity(),ColorPickerDialogFragment.ColorPickerDialogListener
         edit_color_text.onClick {
 
             val f = ColorPickerDialogFragment
-                    .newInstance(DIALOG_text, null, null, resources.getColor(R.color.colorText), true)
+                    .newInstance(1, null, null, resources.getColor(R.color.colorText), true)
 
             f.setStyle(DialogFragment.STYLE_NORMAL, R.style.myTheme)
             f.show(fragmentManager, "d")
@@ -59,17 +52,19 @@ class EditColor : Activity(),ColorPickerDialogFragment.ColorPickerDialogListener
             0 -> {
                 //сохраняем цвет
                 Main.save_str("color_fon",color.toString())
+                Main.COLOR_FON = color
                 //меняем у виджетов
-                fon_edit_color.backgroundColor = color
+                fon_edit_color.backgroundColor = Main.COLOR_FON
 
             }
             1 -> {
                 //сохраняем цвет
                 Main.save_str("color_text",color.toString())
+                Main.COLOR_TEXT = color
                 //меняем у виджетов
-                name_i_version.textColor = color
-                edit_color_text.textColor = color
-                edit_color_fon.textColor = color
+                name_i_version.textColor = Main.COLOR_TEXT
+                edit_color_text.textColor =Main.COLOR_TEXT
+                edit_color_fon.textColor = Main.COLOR_TEXT
             }
         }
     }

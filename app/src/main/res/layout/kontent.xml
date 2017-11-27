@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fon_kontent"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<ScrollView
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:id="@+id/scrollView2"
-    android:layout_margin="5dp">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="5dp">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="fill_parent"
@@ -23,8 +25,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/table1"
-                android:scaleType="fitXY"  />
+                android:scaleType="fitXY"
+                android:src="@drawable/table1" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -36,8 +38,8 @@
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/table2"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/table2" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -49,8 +51,8 @@
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/table3"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/table3" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -62,8 +64,8 @@
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/table4"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/table4" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -75,8 +77,8 @@
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/table5"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/table5" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -88,8 +90,8 @@
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/table6"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/table6" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -101,13 +103,14 @@
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/table7"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/table7" />
+
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/table7_2"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/table7_2" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -119,8 +122,8 @@
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/table8"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/table8" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -132,11 +135,11 @@
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/tablichk"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/tablichk" />
 
         </LinearLayout>
 
-</ScrollView>
+    </ScrollView>
 
 </LinearLayout>

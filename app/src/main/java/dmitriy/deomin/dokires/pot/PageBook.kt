@@ -14,6 +14,7 @@ import android.view.LayoutInflater
 import dmitriy.deomin.dokires.Main
 import dmitriy.deomin.dokires.R
 import kotlinx.android.synthetic.main.book_pot.view.*
+import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.sdk25.coroutines.onLongClick
 import uk.co.deanwild.flowtextview.FlowTextView
@@ -29,13 +30,13 @@ class PageBook :Fragment(){
     var igrik:Int = 0
 
     companion object {
-        var book:FlowTextView? = null
+       lateinit var book:FlowTextView
 
         fun add_tetx(t:String){
             if (Build.VERSION.SDK_INT >= 24) {
-                book!!.text = Html.fromHtml(Main.con_v_palto!!.assets.open("pot_book/"+t).reader().readText(), 0) // for 24 api and more
+                book.text = Html.fromHtml(Main.con_v_palto.assets.open("pot_book/"+t).reader().readText(), 0) // for 24 api and more
             } else {
-                book!!.text = Html.fromHtml(Main.con_v_palto!!.assets.open("pot_book/"+t).reader().readText()) // or for older api
+                book.text = Html.fromHtml(Main.con_v_palto.assets.open("pot_book/"+t).reader().readText()) // or for older api
             }
         }
 
@@ -53,30 +54,24 @@ class PageBook :Fragment(){
         //установим размер шрифта из памяти
         val save_size = Main.read_str("book_font_size")
         if(save_size.length>1){
-            book!!.setTextSize(save_size.toFloat())
-        }
-
-
-        //установим цвета
-        //установим цвет фона
-        if (Main.read_str("color_fon").length > 1) {
-           v.fon_book_pot.setBackgroundColor(Main.read_str("color_fon").toInt())
-        }
-
-        if(Main.read_str("color_text").length>1){
-           book!!.textColor=(Main.read_str("color_text").toInt())
+            book.setTextSize(save_size.toFloat())
         }else{
-            book!!.textColor = Color.BLACK
+            //установим поумолчанию
+            book.setTextSize(50f)
         }
+
+        //установим цвет фона и текста
+        v.fon_book_pot.backgroundColor = Main.COLOR_FON
+        book.textColor = Main.COLOR_TEXT
 
         //установим текст  из памяти
         if(Main.read_str("old_text_book_pot")!=""){
             if (Build.VERSION.SDK_INT >= 24) {
-                book!!.text = Html.fromHtml(
-                        Main.con_v_palto!!.assets.open(
+                book.text = Html.fromHtml(
+                        Main.con_v_palto.assets.open(
                                 "pot_book/"+Main.read_str("old_text_book_pot")).reader().readText(), 0) // for 24 api and more
             } else {
-                book!!.text = Html.fromHtml( Main.con_v_palto!!.assets.open(
+                book.text = Html.fromHtml( Main.con_v_palto.assets.open(
                         "pot_book/"+Main.read_str("old_text_book_pot")).reader().readText()) // or for older api
             }
         }
@@ -97,7 +92,7 @@ class PageBook :Fragment(){
 
 
 
-        book!!.onLongClick {
+        book.onLongClick {
             //сохраняем прокрутку
             Main.save_str("old_skrol_book_pot", igrik.toString())
 
@@ -109,13 +104,13 @@ class PageBook :Fragment(){
 
         v.big_text.onClick {
             val size = v.book_telo.textsize
-            book!!.setTextSize(size+1)
+            book.setTextSize(size+1)
             Main.save_str("book_font_size",v.book_telo.textsize.toString())
         }
 
         v.smoll_text.onClick {
             val size = v.book_telo.textsize
-            book!!.setTextSize(size-1)
+            book.setTextSize(size-1)
             Main.save_str("book_font_size",v.book_telo.textsize.toString())
         }
 
@@ -135,6 +130,7 @@ class PageBook :Fragment(){
             Main.save_arraylist("zakladki",vse_zakladki)
             //обновляем список закладок
             recyclerView.adapter.notifyDataSetChanged()
+
 
 
         }

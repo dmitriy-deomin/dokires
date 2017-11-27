@@ -11,7 +11,7 @@ class Pot : FragmentActivity(){
 
     companion object {
         @SuppressLint("StaticFieldLeak")
-        var viewpager: ViewPager? = null
+        lateinit  var viewpager: ViewPager
     }
 
 
@@ -22,26 +22,26 @@ class Pot : FragmentActivity(){
         val adapter = Adapter(supportFragmentManager)
         viewpager = findViewById<View>(R.id.pager) as ViewPager
 
-        viewpager!!.adapter = adapter
-        viewpager!!.offscreenPageLimit = 3
+        viewpager.adapter = adapter
+        viewpager.offscreenPageLimit = 3
 
 
         //если первый раз открывает то покажем оглавление
         if(Main.read_str("old_text_book_pot").length<2) {
-            viewpager!!.currentItem = 0
+            viewpager.currentItem = 0
         }else{
             //иначе продолжим чтение
-            viewpager!!.currentItem = 1
+            viewpager.currentItem = 1
         }
 
     }
 
     override fun onBackPressed() {
 
-        if(viewpager!!.currentItem==0){
+        if(viewpager.currentItem==0){
             this.finish()
         }else{
-            viewpager!!.currentItem=0
+            viewpager.currentItem=0
             return
         }
 

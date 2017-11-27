@@ -1,6 +1,5 @@
 package dmitriy.deomin.dokires.pot
 
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.DefaultItemAnimator
@@ -18,22 +17,12 @@ import java.util.*
 
 class PageOglavlenie : Fragment() {
 
-    var COLOR_TEXT:String = ""
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v: View = inflater.inflate(R.layout.oglavlenie_pot, null)
 
         //установим цвет фона
-        if (Main.read_str("color_fon").length > 1) {
-            v.fon_list_oglavlenie.backgroundColor = Main.read_str("color_fon").toInt()
-        }
-
-        if(Main.read_str("color_text").length>1){
-            COLOR_TEXT = Main.read_str("color_text")
-        }else{
-            COLOR_TEXT = Color.BLACK.toString()
-        }
+        v.fon_list_oglavlenie.backgroundColor = Main.COLOR_FON
 
         val recyclerView: RecyclerView= v.findViewById(R.id.my_recycler_view)
 
@@ -54,7 +43,7 @@ class PageOglavlenie : Fragment() {
 
         for (i in 0 until files.size) {
             stroka = HashMap<String,String>(files.size)
-            stroka.put("color_text",COLOR_TEXT )
+            stroka.put("color_text",Main.COLOR_TEXT.toString() )
             stroka.put("glava", File(files.get(i)).name)
             stroka.put("text_glavi", files[i])
             result.add(stroka)
