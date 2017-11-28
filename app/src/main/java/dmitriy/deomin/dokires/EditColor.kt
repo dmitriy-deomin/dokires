@@ -15,7 +15,7 @@ class EditColor : Activity(),ColorPickerDialogFragment.ColorPickerDialogListener
         super.onCreate(savedInstanceState)
         setContentView(R.layout.edit_color)
 
-        //устанавливаем цвета если есть в сохранялках
+        //устанавливаем цвета
         fon_edit_color.backgroundColor = Main.COLOR_FON
 
         //меняем у виджетов

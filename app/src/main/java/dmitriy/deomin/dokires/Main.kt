@@ -20,9 +20,8 @@ import org.json.JSONArray
 class Main : Activity() {
 
     companion object {
-
-        var COLOR_FON = R.color.colorFon
-        var COLOR_TEXT = R.color.colorText
+        var COLOR_FON = 0
+        var COLOR_TEXT = 0
 
         @SuppressLint("StaticFieldLeak")
         lateinit var con_v_palto: Context
@@ -99,18 +98,21 @@ class Main : Activity() {
         //устанавливаем цвета
         if (read_str("color_fon").length > 1) {
             COLOR_FON=read_str("color_fon").toInt()
-
-            fon.backgroundColor = COLOR_FON
+        }else{
+            COLOR_FON = resources.getColor(R.color.colorFon)
         }
         if (read_str("color_text").length > 1) {
-            COLOR_TEXT=read_str("color_text").toInt()
-
-            val text_color = COLOR_TEXT
-            nameapp.textColor = text_color
-            rasshifrovka.textColor = text_color
-            but_pot.textColor = text_color
-            button2.textColor = text_color
+            COLOR_TEXT = read_str("color_text").toInt()
+        }else{
+            COLOR_TEXT = resources.getColor(R.color.colorText)
         }
+
+        fon.backgroundColor = COLOR_FON
+        nameapp.textColor = COLOR_TEXT
+        rasshifrovka.textColor = COLOR_TEXT
+        but_pot.textColor = COLOR_TEXT
+        button2.textColor = COLOR_TEXT
+
 
 
         //титл, при клике будем открывать меню настройки цвета фона и текста
@@ -121,11 +123,5 @@ class Main : Activity() {
         but_pot.onClick { val anim = AnimationUtils.loadAnimation(this@Main, R.anim.myalpha)
             but_pot.startAnimation(anim); startActivity<Pot>() }
     }
-
-
-
-
-
-
 }
 

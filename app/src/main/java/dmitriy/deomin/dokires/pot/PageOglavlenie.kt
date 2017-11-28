@@ -10,8 +10,6 @@ import android.view.ViewGroup
 import dmitriy.deomin.dokires.R
 import android.support.v7.widget.RecyclerView
 import dmitriy.deomin.dokires.Main
-import kotlinx.android.synthetic.main.oglavlenie_pot.view.*
-import org.jetbrains.anko.backgroundColor
 import java.io.File
 import java.util.*
 
@@ -20,9 +18,6 @@ class PageOglavlenie : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v: View = inflater.inflate(R.layout.oglavlenie_pot, null)
-
-        //установим цвет фона
-        v.fon_list_oglavlenie.backgroundColor = Main.COLOR_FON
 
         val recyclerView: RecyclerView= v.findViewById(R.id.my_recycler_view)
 
