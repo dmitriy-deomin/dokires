@@ -9,8 +9,43 @@
     android:orientation="vertical"
     tools:context=".pot.Pot">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_oglavlenie"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="Оглавление"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btn_book_text"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="Книга"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btn_tablica"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="Таблицы"
+            android:textSize="12sp" />
+    </LinearLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 </LinearLayout>
