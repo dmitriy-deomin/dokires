@@ -64,7 +64,7 @@ class RecyclerAdapterOglavlenia(private var items: ArrayList<Map<String, String>
         holder.txtName.onClick {
 
                 //играем анимацию
-                val anim = AnimationUtils.loadAnimation(Main.con_v_palto, R.anim.myalpha)
+                val anim = AnimationUtils.loadAnimation(Main.con, R.anim.myalpha)
                 holder.txtName.startAnimation(anim)
 
                 //делаем текст кнопки жирным

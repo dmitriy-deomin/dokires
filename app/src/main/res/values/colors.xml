@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorFon">#b7c9e9</color>
+    <color name="colorFon_dialog">#7bdf97</color>
     <color name="colorText">#030510</color>
 </resources>

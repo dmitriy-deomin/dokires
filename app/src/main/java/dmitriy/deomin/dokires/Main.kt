@@ -22,9 +22,10 @@ class Main : Activity() {
     companion object {
         var COLOR_FON = 0
         var COLOR_TEXT = 0
+        var COLOR_FON_DIALOG =0
 
         @SuppressLint("StaticFieldLeak")
-        lateinit var con_v_palto: Context
+        lateinit var con: Context
 
         //сохранялка
         //----------------------------------------------------------------
@@ -91,7 +92,7 @@ class Main : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
 
-        con_v_palto = applicationContext
+        con = applicationContext
 
         settings = getSharedPreferences("mysettings", FragmentActivity.MODE_PRIVATE)
 
@@ -100,6 +101,11 @@ class Main : Activity() {
             COLOR_FON=read_str("color_fon").toInt()
         }else{
             COLOR_FON = resources.getColor(R.color.colorFon)
+        }
+        if (read_str("color_fon_dialog").length > 1) {
+            COLOR_FON_DIALOG=read_str("color_fon_dialog").toInt()
+        }else{
+            COLOR_FON_DIALOG = resources.getColor(R.color.colorFon_dialog)
         }
         if (read_str("color_text").length > 1) {
             COLOR_TEXT = read_str("color_text").toInt()

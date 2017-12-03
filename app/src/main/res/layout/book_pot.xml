@@ -19,52 +19,89 @@
         <uk.co.deanwild.flowtextview.FlowTextView
             android:id="@+id/book_telo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </uk.co.deanwild.flowtextview.FlowTextView>
+            android:layout_height="wrap_content"></uk.co.deanwild.flowtextview.FlowTextView>
 
     </ScrollView>
 
     <LinearLayout
         android:id="@+id/book_menu"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="100dp"
+        android:background="@android:color/holo_green_dark"
+        android:foregroundGravity="center"
+        android:gravity="center"
         android:orientation="vertical"
         android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Список закладок" />
+
+            <Button
+                android:id="@+id/btn_close_zakladki"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="0"
+                android:background="@android:drawable/ic_menu_close_clear_cancel" />
+        </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_zakladki"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_weight="2"
+            android:background="@android:color/holo_green_dark">
+
+        </android.support.v7.widget.RecyclerView>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/smoll_text"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
+                android:foregroundGravity="center"
+                android:gravity="center"
                 android:text="-" />
 
             <Button
-                android:id="@+id/add_zakladka"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:drawableBottom="@android:drawable/btn_star_big_on" />
-
-            <Button
                 android:id="@+id/big_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:text="+" />
+
+            <Button
+                android:id="@+id/add_zakladka"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Добавить в закладки" />
         </LinearLayout>
 
 

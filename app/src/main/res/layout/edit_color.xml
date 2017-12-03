@@ -27,6 +27,15 @@
         android:textColor="@android:color/black" />
 
     <Button
+        android:id="@+id/edit_color_fon_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="Изменить цвет фона окон"
+        android:textColor="@android:color/black" />
+
+
+    <Button
         android:id="@+id/edit_color_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

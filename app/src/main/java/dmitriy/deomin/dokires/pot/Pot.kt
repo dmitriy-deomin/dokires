@@ -10,7 +10,6 @@ import dmitriy.deomin.dokires.R
 import kotlinx.android.synthetic.main.pot.*
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.sdk25.coroutines.onClick
-import org.jetbrains.anko.sdk25.coroutines.onScrollChange
 import org.jetbrains.anko.support.v4.onPageChangeListener
 
 class Pot : FragmentActivity(){
@@ -24,6 +23,11 @@ class Pot : FragmentActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pot)
+
+        //красим фон кнопок переключения вкладок
+        btn_oglavlenie.backgroundColor = Main.COLOR_FON
+        btn_book_text.backgroundColor = Main.COLOR_FON
+        btn_tablica.backgroundColor = Main.COLOR_FON
 
         val adapter = Adapter(supportFragmentManager)
         viewpager = findViewById<View>(R.id.pager) as ViewPager
