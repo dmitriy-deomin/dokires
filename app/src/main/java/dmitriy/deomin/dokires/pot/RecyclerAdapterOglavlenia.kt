@@ -21,10 +21,7 @@ class RecyclerAdapterOglavlenia(private var items: ArrayList<Map<String, String>
 
 
     class ViewHolder(row: View) : RecyclerView.ViewHolder(row) {
-        lateinit var txtName: Button
-        init {
-            this.txtName = row.findViewById<Button>(R.id.item_glava)
-        }
+        var txtName: Button = row.findViewById<Button>(R.id.item_glava)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
@@ -40,7 +37,10 @@ class RecyclerAdapterOglavlenia(private var items: ArrayList<Map<String, String>
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         //установим фон как везде
-        holder.txtName.backgroundColor = Main.COLOR_FON
+        holder.txtName.backgroundColor =Main.COLOR_FON
+
+        //установим прозрачность чередующееся
+        holder.txtName.alpha =  (if (position % 2 == 0) 0.6F else 0.8F)
 
         //посиотрим если есть отмеченые кнопки окрасим из
         if(Main.read_str(items[position]["glava"].toString())==items[position]["glava"].toString()){

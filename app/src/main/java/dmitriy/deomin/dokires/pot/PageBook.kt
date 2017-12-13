@@ -38,6 +38,7 @@ class PageBook :Fragment(){
     var igrik:Int = 0
     companion object {
        lateinit var book:FlowTextView
+        @SuppressLint("StaticFieldLeak")
         lateinit var con:Context
 
         fun add_tetx(t:String){
@@ -64,13 +65,7 @@ class PageBook :Fragment(){
         v.book_menu.backgroundColor = Main.COLOR_FON_DIALOG
 
         //установим размер шрифта из памяти
-        val save_size = Main.read_str("book_font_size")
-        if(save_size.length>1){
-            book.setTextSize(save_size.toFloat())
-        }else{
-            //установим поумолчанию
-            book.setTextSize(50f)
-        }
+        book.setTextSize(if(Main.read_str("book_font_size").length>1)Main.read_str("book_font_size").toFloat()else 50f)
 
         //установим цвет фона и текста
         v.fon_book_pot.backgroundColor = Main.COLOR_FON
@@ -126,7 +121,7 @@ class PageBook :Fragment(){
 
 
 
-        book.onLongClick {
+        book.onLongClick(returnValue = true) {
             //сохраняем прокрутку
             Main.save_str("old_skrol_book_pot", igrik.toString())
 
@@ -136,18 +131,10 @@ class PageBook :Fragment(){
                 v.book_menu.visibility = View.GONE}
         }
 
-        v.big_text.onClick {
-            val size = v.book_telo.textsize
-            book.setTextSize(size+1)
-            Main.save_str("book_font_size",v.book_telo.textsize.toString())
-        }
 
-        v.smoll_text.onClick {
-            val size = v.book_telo.textsize
-            book.setTextSize(size-1)
-            Main.save_str("book_font_size",v.book_telo.textsize.toString())
 
-        }
+
+
         v.btn_close_zakladki.onClick {
             //играем анимацию
             val anim = AnimationUtils.loadAnimation(Main.con, R.anim.myalpha)

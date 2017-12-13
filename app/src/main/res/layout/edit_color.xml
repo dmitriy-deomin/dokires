@@ -42,4 +42,5 @@
         android:background="@android:color/transparent"
         android:text="Изменить цвет текста"
         android:textColor="@android:color/black" />
+
 </LinearLayout>

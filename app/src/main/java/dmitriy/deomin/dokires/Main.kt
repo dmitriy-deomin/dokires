@@ -113,6 +113,7 @@ class Main : Activity() {
             COLOR_TEXT = resources.getColor(R.color.colorText)
         }
 
+
         fon.backgroundColor = COLOR_FON
         nameapp.textColor = COLOR_TEXT
         rasshifrovka.textColor = COLOR_TEXT
